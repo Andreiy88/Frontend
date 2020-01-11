@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Exercises 1 HMW</title>
+	<meta charset="utf-8">
+
+	<script>
+		//1.functie "equals" care compara 2 valori si returneaza true daca sunt egale si false daca nu sunt egale//
+
+		function equals(a,b){
+			if (a === b) {
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		console.log(equals(15,20));
+		console.log(equals(25,25));
+		console.log(equals(25,15));
+
+		//2.O functie "compare" care compara 2 valori si returneaza -1 daca primul e mai mic ca al doilea, 0 daca sunt egale si 1 daca primul e mai mare ca al doilea//
+
+		function compare(a,b){
+			if (a === b) {
+				return "0"
+			}else if (a < b ) {
+				return "-1"
+			}else {
+				return "1"
+			}
+		}
+
+		console.log(compare(17,15));
+		console.log(compare(25,25));
+		console.log(compare(8,12));
+
+		//3.O functie "max" care primeste 2 valori si returneaza maximul dintre cele 2//
+
+		function max(a,b){
+			if (a > b) {
+				return a
+			}else if (a < b) {
+				return b
+			}else {
+				return a && b
+			}
+		}
+
+		console.log(max(10,15));
+		console.log(max(20,25));
+		console.log(max(30,15));
+		console.log(max(10,10));
+
+		//4.O functie "min" care primeste 2 valori si returneaza minimul dintre cele 2//
+
+		function min(a,b){
+			if (a < b) {
+				return a
+			} else {
+				return b
+			}
+		}
+
+		console.log(min(15,25));
+		console.log(min(25,10));
+		console.log(min(10,10));
+
+		//5.functie "suma" care intoarce suma primelor N numere naturale pozitive//
+
+		function suma(N){
+
+			var i = 0
+			var sum = 0
+
+			for (var i = 0 ; i <= N ; i++) {
+
+				var sum = sum + i ;
+
+			} return sum;
+
+		}
+
+		console.log(suma(6));
+		console.log(suma(5));
+		
+
+
+		//6.O functie "prim" care verifica daca N este numar prim (restul impartirii la 1 si la N ==0)//
+
+
+
+		function prim(N){
+
+  			
+  			for(var i = 2; i < N; i++) {
+
+    			if(N % i === 0 && N % N === 0) 
+
+    				return false;
+ 					 
+ 					}
+
+  				return true;
+			}
+
+		console.log(prim(15));
+		console.log(prim(7));
+		console.log(prim(4));
+		console.log(prim(2));
+
+
+		//!!!!!7.O functie "sumaPrime" care intoarce suma primelor N numere prime (pentru N=5 trebuie suma 2+3+5+7+11)!!!!!!! Not working properly//
+
+
+
+		function prim(N){
+
+  			
+  			for(var i = 2; i < N; i++) {
+
+    			if(N % i === 0 && N % N === 0) 
+
+    				return false;
+ 					 
+ 					}
+
+  				return true;
+			}
+
+		function sumaPrime(num)	{
+			var sum = 0;
+			for (var i = 2 ; i <= num ; i++) {
+				if (prim(i)) {
+					sum = sum + i;
+				}
+			} return sum
+		}	
+
+		console.log(sumaPrime(7));
+
+		//8.functie "invers" care primeste un parametru de tip numar si intoarce inversul acestuia (ca numar) (123 => 321)//
+
+
+			function invers(str){
+
+				var strInvers = "";
+
+				for(var i=str.length-1;i>=0;i--){
+
+					strInvers+=str[i];
+				}
+				return strInvers;
+			}
+
+			console.log(invers("123"));	
+			console.log(invers("123456"))	
+
+
+		//9.O functie "produsImpare" care intoarce produsul primelor N numere impare pozitive//
+		
+
+		function prim(N) {
+			for (var i = 2; i < N ; i++){
+				if (N % i === 0){
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function produsImpare(num){
+			var prod = 1;
+			for (var i = 3 ; i <= num ; i++){
+				if(prim(i)){
+					prod = prod * i;
+				}
+			}
+			return prod;
+		}
+
+		console.log(produsImpare(7));
+
+		//functie "contains" care primeste 2 parametri(arr - array de nr intregi si x - numar) si verifica daca x exista in array//
+
+		//O functie "palindrom" care verifica daca un numar primit ca parametru este palindrom (inversul == originalul, ex: 1234321, 55, 787)//
+
+		
+			function inversa(str){
+
+				var strInvers = "";
+
+				for(var i=str.length-1;i>=0;i--){
+
+					strInvers+=str[i];
+				}
+				return strInvers;
+			}
+			
+			
+			function palindrom(str){
+
+				return str===inversa(str);
+			}
+
+			
+			function palindrom2(str){
+				for(var i=0;i<str.length;i++){
+
+					if(str[i]!==str[str.length-i-1]){
+
+						return false;
+					}
+				}
+				return true;
+			}
+
+			console.log(palindrom("AABAA"));
+			console.log(palindrom("AAPPAA"));
+			console.log(palindrom("ABCDEFGH"));
+			console.log(palindrom("JAVASCRIPT"));
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
