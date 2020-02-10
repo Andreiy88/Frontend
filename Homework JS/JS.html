@@ -23,12 +23,10 @@
 
 		function compare(a,b){
 			if (a === b) {
-				return "0"
+				return 0;
 			}else if (a < b ) {
-				return "-1"
-			}else {
-				return "1"
-			}
+				return -1;
+			}return 1;
 		}
 
 		console.log(compare(17,15));
@@ -42,9 +40,8 @@
 				return a
 			}else if (a < b) {
 				return b
-			}else {
-				return a && b
-			}
+			}return a && b;
+			
 		}
 
 		console.log(max(10,15));
@@ -110,7 +107,7 @@
 		console.log(prim(2));
 
 
-		//!!!!!7.O functie "sumaPrime" care intoarce suma primelor N numere prime (pentru N=5 trebuie suma 2+3+5+7+11)!!!!!!! Not working properly//
+		//7.O functie "sumaPrime" care intoarce suma primelor N numere prime (pentru N=5 trebuie suma 2+3+5+7+11)!!!!!!! Nu am reusit sa o fac cu for . Daca imi poti arata care ar fi metoda ar fi super.
 
 
 
@@ -128,16 +125,20 @@
   				return true;
 			}
 
-		function sumaPrime(num)	{
-			var sum = 0;
-			for (var i = 2 ; i <= num ; i++) {
-				if (prim(i)) {
-					sum = sum + i;
-				}
-			} return sum
-		}	
 
-		console.log(sumaPrime(7));
+		function sumaPrime(num){
+			var i = 2 ; 
+			var sum = 0;
+			var count = 0;
+			 while (count < num) {
+			 	if (prim(i)) {
+			 		sum = sum + i;
+			 		count = count + 1 ;
+			 	} var i = i + 1;
+			 } return sum;
+		}
+
+		console.log(sumaPrime(5));
 
 		//8.functie "invers" care primeste un parametru de tip numar si intoarce inversul acestuia (ca numar) (123 => 321)//
 
@@ -154,36 +155,169 @@
 			}
 
 			console.log(invers("123"));	
-			console.log(invers("123456"))	
+			console.log(invers("123456"));
 
 
 		//9.O functie "produsImpare" care intoarce produsul primelor N numere impare pozitive//
 		
 
-		function prim(N) {
-			for (var i = 2; i < N ; i++){
-				if (N % i === 0){
+		function impar(N) {
+			for (var i = 1; i < N ; i++){
+				if (N % 2 === 0){
 					return false;
 				}
 			}
 			return true;
 		}
 
+		
+		console.log(impar(2));
+		console.log(impar(3));
+		console.log(impar(5));
+
+
 		function produsImpare(num){
 			var prod = 1;
-			for (var i = 3 ; i <= num ; i++){
-				if(prim(i)){
+			for (var i = 1 ; i <= num ; i++){
+				if(impar(i)){
 					prod = prod * i;
 				}
 			}
 			return prod;
 		}
 
-		console.log(produsImpare(7));
+		console.log(produsImpare(3));
 
-		//functie "contains" care primeste 2 parametri(arr - array de nr intregi si x - numar) si verifica daca x exista in array//
 
-		//O functie "palindrom" care verifica daca un numar primit ca parametru este palindrom (inversul == originalul, ex: 1234321, 55, 787)//
+		//10.O functie "contains" care primeste 2 parametri(arr - array de nr intregi si x - numar) si verifica daca x exista in array// 
+
+
+
+		function contains(arr,x) {
+			for (var i = 0; i!= arr.length;i++)
+				if (arr[i] = x ) {
+					return "true" + "..." + x;
+
+				}
+		}
+
+		console.log(contains([1,2,3,4,5,6,7],7));	
+		console.log(contains([5,3,2,1,2,3],5));
+		console.log(contains([1,2,3,4,5,6],2));
+
+		//11.O functie "maxArray" care intoarce maximul dintr-un array primit ca parametru//
+
+
+
+
+		function maxArray (arr) {
+			var max = 0;
+			for (var i = 0; i < arr.length ; i++){
+				if (max < arr[i]){
+					max = arr[i];
+				}
+			} return max;
+
+		}
+
+		console.log(maxArray([1,2,25,3,4,5,6,19]));
+		console.log(maxArray([17,25,-30]));
+
+
+		//12.O functie "sumMinMax" care intoarce suma dintre max si min, dintr-un array primit ca parametru//
+
+		
+		
+		function sumMinMax (arr) {
+			
+			var max = 0;
+			var min = arr[0];
+
+			for (var i = 0; i < arr.length ; i++){
+				for (var j=0; j < arr.length;j++){
+					if (max < arr[i]){
+						max = arr[i]
+						if (min > arr[j]){
+						min = arr[j];
+					} 
+				} 
+
+			}
+
+		}return min + max;
+
+	}
+
+			console.log(sumMinMax([1,2,3,4,5,6]));
+			console.log(sumMinMax([1,2,3,26,5]));
+
+
+
+		//13.O functie "hasDuplicates" care verifica daca exista duplicate intr-un array primit ca parametru//
+
+
+		function hasDuplicates(arr) {
+
+			var i = 0;
+			var j = 0;
+
+			for (i=0;i<=arr.length;i++){
+				for (j=0;j<arr.length;j++){
+					if (i!=j && arr[i] == arr[j]){
+						return arr[i];
+					}
+				}
+			}
+			return "no duplicates";
+		}
+
+		console.log(hasDuplicates([1,2,2,3,4,5]));
+		console.log(hasDuplicates([2,4,6,7]));
+		console.log(hasDuplicates("AABCD"));
+
+
+		//14.O functie "produsPozitive" care intoarce produsul numerelor pozitive intr-un array primit ca parametru//
+
+
+		function produsPozitive(arr){
+			
+			var N = 1;
+			for (i = 0 ; i <= arr.length ; i++){
+				if (arr[i] >= 0){
+					N = N * arr[i];
+				}
+			} return N;
+		}
+
+		console.log (produsPozitive([1,2,-5,3,5]));
+
+		//OR
+
+		function pozitiv(N){
+			for( i=0; i<N ; i++){
+				if (N>0){
+					return true;
+				}
+			}return false;
+		}
+		console.log(pozitiv(5));
+		console.log(pozitiv(-5));
+
+
+		function produsPozitive2(arr){
+			var prod = 1;
+			for (var i = 0 ; i <= arr.length ; i++){
+				if(pozitiv(arr[i])){
+					prod = prod * arr[i];
+				}
+			}
+			return prod;
+		}
+
+		console.log(produsPozitive2([1,2,3,5,-6]));	
+		
+
+		//15.O functie "palindrom" care verifica daca un numar primit ca parametru este palindrom (inversul == originalul, ex: 1234321, 55, 787)//
 
 		
 			function inversa(str){
@@ -196,6 +330,8 @@
 				}
 				return strInvers;
 			}
+
+			console.log(inversa([1,2,3,4]));
 			
 			
 			function palindrom(str){
@@ -203,7 +339,7 @@
 				return str===inversa(str);
 			}
 
-			
+
 			function palindrom2(str){
 				for(var i=0;i<str.length;i++){
 
@@ -219,7 +355,11 @@
 			console.log(palindrom("AAPPAA"));
 			console.log(palindrom("ABCDEFGH"));
 			console.log(palindrom("JAVASCRIPT"));
+			console.log(palindrom([12321]));
 
+
+
+ 
 	</script>
 </head>
 <body>
