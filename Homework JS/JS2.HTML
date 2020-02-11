@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS2</title>
+	<meta charset="utf-8">
+	<style></style>
+	<script>
+		
+		//1.O functie "getDigits" care primeste un sir de caractere si returneaza cifrele din sirul respectiv
+		
+
+
+		function getDigits(str) {
+			var i = 0 ;
+			var digits = [];
+			for (i=0;i <= str.length ; i++){
+				if (str[i] > 0) {
+					digits = digits + str[i] ;
+					
+				}
+			} return digits;
+		}
+
+		console.log(getDigits("[1,2,3,4,5,4])ABVASCASC"));
+
+	
+
+		//2. O functie "getLetters" care primeste un sir de caractere si returneaza doar literele din sirul respectiv
+
+		function getLetters(str) {
+			var i = 0;
+			var letters = "";
+
+			for (i = 0 ; i <= str.length ; i++){
+				if (str[i] >= 'A') {
+					letters = letters + str[i] ; 
+				}
+			} return letters;
+		} 
+
+		console.log (getLetters("S,1,A,2,L,3,U,4,T,5"));
+
+
+		//3. O functie "getFirst5Letters" care primeste un sir de caractere si returneaza primele 5 litere(daca exista)
+
+		 function getFirst5Letters (str) {
+		 	var i = 0;
+		 	var letters = "";
+		 	var count = 0;
+
+		 	for (var i = 0; i <= str.length ; i++) {
+		 		if (str[i] >= "A" && count < 5) {
+		 			count = count + 1;
+		 			letters = letters + str[i];
+		 		} 			 		
+		 	} return letters;
+		 }
+
+
+		 console.log(getFirst5Letters("ABCD123ABCD"));
+		 console.log(getFirst5Letters("12345A"));
+
+
+
+		
+		//4.O functie "concatenate" care primeste o lista de siruri de caractere si returneaza sirurile concatenate
+
+
+		function concatenate (str1,str2){
+			var full = str1.concat(str2);
+		}
+
+		console.log("ABC","DEF");
+
+
+		//5.O functie "getAllDigits" care primeste o lista de siruri de caractere si returneaza cifrele din toate sirurile
+
+
+
+		function getAllDigits (str1,str2)  {
+			var full = str1.concat(str2)
+			var i = 0 ;
+			var digits = [];
+			for (i=0;i <= full.length ; i++){
+				if (full[i] > 0) {
+					digits = digits + full[i] ;
+					
+				}
+			} return digits;
+		}
+
+		console.log(getAllDigits("ABC1", "ABCA2"));
+		console.log(getAllDigits("AAAA","123"));
+
+
+		//6.O functie "invertAllStrings" care primeste o lista de siruri de caractere si returneaza lista de siruri de caractere inversate
+			
+
+
+
+		function invertAllStrings(str1,str2){
+			var full = str1.concat(str2);
+			var strInvers = "";
+
+			for(var i=full.length-1;i>=0;i--){
+
+				strInvers+=full[i];
+			}
+			return strInvers;
+		}
+
+
+		console.log(invertAllStrings("Andrei","invata"));
+
+
+		//7.Calculeaza factorialul unui numar ("factorial")
+
+		function factorial (factorial) {
+			var result = 1;
+			for (i=1;i<=factorial ; i++) {
+				if (factorial >=1){
+					result = result * i;
+				} 
+				
+				
+			} return result;
+		}
+
+		console.log (factorial(5));
+
+		//8. Calculeaza cel mai mare divizor comun al 2 numere ("cmmdc")
+
+			function cmmdc(x,y) {
+	    		x = Math.abs(x);
+	    		y = Math.abs(y);
+	    			if (y > x) {
+	      			 var z = x; 
+	       			 x = y; 
+	       			 y = z;
+	    			}
+	    		while (true) {
+	       		if (y === 0) { 
+	            	return x;
+	        	}
+	        		x %= y;
+	        		if (x === 0){
+	        		 return y;
+	       				}
+	       			y %= x;
+	    		}
+			}
+			console.log(cmmdc(5,15));
+			console.log(cmmdc(3,14));
+
+		//9. Calculeaza cel mai mic multiplu comun al 2 numere ("cmmmc")
+
+			function cmmdc(x,y) {
+	    		x = Math.abs(x);
+	    		y = Math.abs(y);
+	    			if (y > x) {
+	      			 var z = x; 
+	       			 x = y; 
+	       			 y = z;
+	    			}
+	    		while (true) {
+	       		if (y === 0) { 
+	            	return x;
+	        	}
+	        		x %= y;
+	        		if (x === 0){
+	        		 return y;
+	       				}
+	       			y %= x;
+	    		}
+			}
+
+
+			function cmmmc(x,y) {
+				var multiplu = Math.abs(x*y) / cmmdc(x,y);
+				return multiplu;
+			}			
+
+			console.log(cmmmc(5,15));
+
+
+			//10.Returneaza un array care sa contina toti divizorii unui numar (ex pentru 64: trebuie sa returneze [2,4,8,16,32]) ("divizori")
+			//Am pus slice sa scot ultima virgula. Daca o las normal adauga o virgula in plus la sfarsit sau la inceput , in functie de if , daca pun "+," inainte sau dupa i.
+
+			function divizori (x) {
+				var d = "";
+				for (i=0;i<x;i++){
+					if(x%i === 0) {
+						d = d + i + ",";
+					}
+					var string = d.slice(0,-1);
+				} return string;
+			}
+
+			console.log(divizori(64));
+			console.log(divizori(32));
+			console.log(divizori(54));
+
+			//11.O functie care verifica daca un numar este palindrom (ex: 121, 1234321) ("palindrom")
+
+
+
+			function palindrom(x) {
+			    var invers = 0;
+			    while (invers < x) {
+			        invers = invers * 10 + x % 10;
+			        x /= 10;
+			    }
+			    return invers === x || invers / 10 === x;
+			}
+			
+
+			console.log(palindrom(121));
+			console.log(palindrom(1234321));
+
+
+
+			//12.O functie care sorteaza numerele pare dintr-un sir de numere primit ca parametru. ("sort")
+
+
+			function sort (numere){
+				var s = "";
+				for (i=0;i<=numere.length;i++){
+					if(numere[i]%2 === 0){
+						var s = s  + numere[i]+",";
+					}
+					var string = s.slice(0,-1);
+				}return string;
+			}
+
+			console.log(sort([1,12,3,5,6,7]));
+
+		
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
